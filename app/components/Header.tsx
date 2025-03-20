@@ -50,11 +50,11 @@ const Header: React.FC = () => {
                     <button
                         onClick={toggleMobileMenu}
                         type="button"
-                        className="inline-flex items-center justify-center p-2 rounded-md text-[var(--foreground)] dark:text-white hover:bg-[var(--secondary-color)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--primary-color)]"
+                        className="min-w-auto shadow-none inline-flex items-center justify-center p-2 rounded-md text-[var(--foreground)] dark:text-white hover:bg-[var(--secondary-color)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--primary-color)]"
                         aria-controls="mobile-menu"
                         aria-expanded={isMobileMenuOpen}
                     >
-                        <span className="sr-only">Abrir menú</span>
+                        <span className="sr-only">Open Menu</span>
                         {isMobileMenuOpen ? (
                         <svg
                             className="block h-6 w-6"
