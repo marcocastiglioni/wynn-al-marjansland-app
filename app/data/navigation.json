@@ -1,0 +1,27 @@
+{
+  "header" : [
+    { "title": "Rooms & Suites", "link": "/rooms-suites"},
+    { "title": "Wynn Rewards", "link": "/wynn-rewards"},
+    { "title": "Offers", "link": "/offers"},
+    { "title": "Dining", "link": "/dining"},
+    { "title": "Entertainment", "link": "/entertainment"},
+    { "title": "Meetings & Events", "link": "/meetings-and-events"}
+  ],
+  "footer" : [
+    { "title": "Shop Home Collection", "link": "/shop-home-collection"},
+    { "title": "Gift Cards", "link": "/"},
+    { "title": "Wynn Stories", "link": "/"},
+    { "title": "Mobile App", "link": "/"},
+    { "title": "Responsible Gaming", "link": "/"},
+    { "title": "About Us", "link": "/"},
+    { "title": "Careers", "link": "/"},
+    { "title": "Investor Relations", "link": "/"},
+    { "title": "Privacy Notice", "link": "/"},
+    { "title": "Cookie Notice", "link": "/"},
+    { "title": "Terms of Use", "link": "/"},
+    { "title": "Hotel Information & Directory", "link": "/"},
+    { "title": "Wynn Palace Cotai", "link": "/"},
+    { "title": "Encore Boston Harbor", "link": "/"},
+    { "title": "Encore Boston Harbor", "link": "/"}
+  ]
+}

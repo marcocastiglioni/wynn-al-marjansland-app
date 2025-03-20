@@ -1,15 +1,53 @@
 @import "tailwindcss";
 
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme); 
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@layer base {
+  h1 {
+    @apply text-4xl font-sans font-medium text-[var(--healine)];
+  }
+  h2 {
+    @apply text-[22px] font-sans font-medium text-[var(--healine)] inline-flex border-b pr-[43px] pb-1 mb-5;
+  }
+  h3 {
+    @apply text-xl font-sans font-medium text-[var(--healine)];
+  }
+  h4 {
+    @apply text-lg font-sans font-medium text-[var(--healine)];
+  }
+  h5 {
+    @apply text-lg font-sans font-medium text-[var(--healine)];
+  }
+  h6 {
+    @apply text-base font-sans font-medium text-[var(--healine)];
+  }
+  label {
+    @apply text-sm font-sans font-medium text-[var(--healine)];
+  }
+  button {
+    @apply text-[var(--mono)] py-4 font-semibold uppercase min-w-[217px] text-center cursor-pointer hover:shadow-lg hover:underline;
+  }
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F7F7F7;
+  --foreground: #000000;
+  --healine: #1D1F22;
+  --border: #E8E9E9;
+  --border-secondary: #5A3A27;
+  --placeholder: #999999;
+  --primary: #006F62;
+  --base: #667085;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-libre-caslon);
+  --font-mono: var(--font-montserrat);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +59,6 @@
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: var(--base);
   font-family: Arial, Helvetica, sans-serif;
 }

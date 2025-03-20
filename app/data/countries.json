@@ -1,0 +1,47 @@
+[
+  {
+    "value": "US",
+    "label": "United States",
+    "code": "+1",
+    "mask": "(000) 000-0000",
+    "flag": "🇺🇸",
+    "phoneRegex": "^\\d{10}$",
+    "countryCodeRegex": "^\\+1$"
+  },
+  {
+    "value": "ES",
+    "label": "Spain",
+    "code": "+34",
+    "mask": "000 000 000",
+    "flag": "🇪🇸",
+    "phoneRegex": "^\\d{9}$",
+    "countryCodeRegex": "^\\+34$"
+  },
+  {
+    "value": "AE",
+    "label": "United Arab Emirates",
+    "code": "+971",
+    "mask": "000 000 000",
+    "flag": "🇦🇪",
+    "phoneRegex": "^\\d{9}$",
+    "countryCodeRegex": "^\\+971$"
+  },
+  {
+    "value": "CR",
+    "label": "Costa Rica",
+    "code": "+506",
+    "mask": "0000 0000",
+    "flag": "🇨🇷",
+    "phoneRegex": "^\\d{8}$",
+    "countryCodeRegex": "^\\+506$"
+  },
+  {
+    "value": "IT",
+    "label": "Italy",
+    "code": "+39",
+    "mask": "000 000 0000",
+    "flag": "🇮🇹",
+    "phoneRegex": "^\\d{10}$",
+    "countryCodeRegex": "^\\+39$"
+  }
+]
