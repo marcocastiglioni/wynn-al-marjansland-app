@@ -1,40 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Requirements
+# Wynn Al Marjan App
 
-Node version: v18.20.4
+A Next.js application for Wynn Al Marjan Island.
 
-## Getting Started
 
-First, run the development server:
+## Authors
 
+- [@marcocastiglioni](https://github.com/marcocastiglioni/)
+
+
+## Tech Stack
+
+**Client:** Next.js v15, TailwindCSS v4
+
+**Server:** Node v18
+
+
+## Step-by-Step Instructions to Installation
+
+#### 1. Open your Terminal
+#### 2. Install NVM using cURL or wget:
+- Using cURL:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+```
+- Using wget:
+```bash
+  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### 3. Install Node
+```bash
+  nvm install 18
+  nvm use 18
+  node --version
+```
+This should print the installed Node.js version, for example, v18.x.x.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### 4. Clone the repository:
+```bash
+  git clone https://github.com/marcocastiglioni/wynn-al-marjansland-app.git
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### 5. Change to the project directory:
 
-## Learn More
+```bash
+  cd wynn-al-marjansland-app
+```
 
-To learn more about Next.js, take a look at the following resources:
+#### 6. Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+  npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### 7. Create an empty .env.local file:
 
-## Deploy on Vercel
+```bash
+  touch .env.local
+  code .
+```
+This will open the Editor, for example Visual Studio Code
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Then, edit the .env.local file (using your preferred editor) to set the necessary variables:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
+API_BASE_URL=http://demo1159445.mockable.io
+```
+
+#### 8. Start the development server:
+
+```bash
+  npm run dev
+```
+
+#### 9. To build and run the application in production mode locally:
+
+```bash
+  npm run build
+```
+
+#### 10. Start the production server:
+
+```bash
+  npm run start
+```
+    
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`API_BASE_URL`
+
+`NEXT_PUBLIC_API_BASE_URL`
+
+
+## API Reference
+
+Get all navigation items for main Header and Footer components
+
+```http
+  GET /api/navigation
+```
+
+Send an OTP verification code to the visitor's preferred method—email or phone. It returns a successful response.
+
+```http
+  POST /api/send-otp/
+```
+
+Verify the OTP code entered by the user to the app. It returns a successful response.
+
+```http
+  POST /api/verify-otp/
+```
+
+
+
+
+
+## Demo
+
+https://wynn-al-marjansland-app.vercel.app/
+
