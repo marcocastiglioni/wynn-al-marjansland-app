@@ -67,10 +67,18 @@ const RegistrationFlow: React.FC = () => {
             });
 
             if ( verifyResponse ) {
+
+              if (!formData) {
+                setLoading(false);
+                setError("Form data is missing");
+                return;
+              }
+              
               try {
-                  const regResponse = await registerUser(formData);
-                  console.log('Registration response:', regResponse);
-                  setStep(4);
+                const regResponse = await registerUser(formData);
+                console.log('Registration response:', regResponse);
+                setStep(4);
+
               } catch (err: unknown) {
                 setLoading(false);
                 let errorMessage = 'Registration error';
