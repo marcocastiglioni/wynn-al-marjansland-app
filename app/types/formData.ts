@@ -1,4 +1,4 @@
-import { UseFormRegister, FieldValues, Path } from 'react-hook-form';
+import { UseFormRegister, FieldValues } from 'react-hook-form';
 
 export interface FormData  {
   firstName: string;
@@ -28,7 +28,7 @@ export interface OptionItem {
 
 export interface FormSelectProps<T extends FieldValues = FormData> extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
-  name: Path<T>;
+  name: string;
   options: OptionItem[];
   error?: string;
   register: UseFormRegister<T>;
