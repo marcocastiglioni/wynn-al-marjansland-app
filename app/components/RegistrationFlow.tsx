@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { FormData } from '@/types/formData';
+import { OtpResponse } from '@/types/servicesData';
 import UserRegistrationForm from '@/components/UserRegistrationForm';
 import OTPVerification from '@/components/OTPVerification';
 import Loading from '@/components/Loading';
@@ -12,6 +13,7 @@ const RegistrationFlow: React.FC = () => {
   const [step, setStep] = useState<number>(1);
   const [formData, setFormData] = useState<FormData | null>(null);
   const [deliveryMethod, setDeliveryMethod] = useState<'phone' | 'email' | ''>('');
+  const [otpResponse, setOtpResponse] = useState<OtpResponse | null>(null);
   const [otpDigits, setOtpDigits] = useState(['', '', '', '']);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
@@ -25,8 +27,9 @@ const RegistrationFlow: React.FC = () => {
 
   const handleNext = async () => {
     setError('');
+    
+    // Request OPT Code
     if (step === 2) {
-      
       if (!deliveryMethod) {
         setError('Please select a delivery method.');
         return;
@@ -34,23 +37,26 @@ const RegistrationFlow: React.FC = () => {
 
       try {
         setLoading(true);
-        const otpResponse = await sendOtp({
+        const response: OtpResponse = await sendOtp({
           email: formData?.email,
           phone: `${formData?.phoneCountry} ${formData?.phoneNumber}`,
           deliveryMethod,
         });
         console.log('OTP sent response:', otpResponse);
-        setLoading(false);
+        setOtpResponse(response);
+        setError('');
         setStep(3);
       } catch (err: unknown) {
-        setLoading(false);
-        let errorMessage = 'Failed to send OTP';
+        let errorMessage = 'Error sending OTP';
         if (err instanceof Error) {
           errorMessage = err.message;
         }
         setError(errorMessage);
+      } finally {
+        setLoading(false);
       }
 
+    // OPT Code Verification and 
     } else if (step === 3) {
 
         try {
@@ -73,7 +79,8 @@ const RegistrationFlow: React.FC = () => {
                 setError("Form data is missing");
                 return;
               }
-              
+
+              // User Registration
               try {
                 const regResponse = await registerUser(formData);
                 console.log('Registration response:', regResponse);
