@@ -14,14 +14,12 @@ const RegistrationFlow: React.FC = () => {
   const [deliveryMethod, setDeliveryMethod] = useState<'phone' | 'email' | ''>('');
   const [otpDigits, setOtpDigits] = useState(['', '', '', '']);
   const [loading, setLoading] = useState<boolean>(false);
-  const [otpError, setOtpError] = useState('');
   const [error, setError] = useState<string>('');
 
   const handleFormSubmit = (data: FormData) => {
     setFormData(data);
     setDeliveryMethod( deliveryMethod || '');
     setOtpDigits(otpDigits || ['', '', '', '']);
-    setOtpError('');
     setStep(2);
   };
 
@@ -44,9 +42,13 @@ const RegistrationFlow: React.FC = () => {
         console.log('OTP sent response:', otpResponse);
         setLoading(false);
         setStep(3);
-      } catch (err: any) {
+      } catch (err: unknown) {
         setLoading(false);
-        setError(err.message || 'Failed to send OTP');
+        let errorMessage = 'Failed to send OTP';
+        if (err instanceof Error) {
+          errorMessage = err.message;
+        }
+        setError(errorMessage);
       }
 
     } else if (step === 3) {
@@ -64,20 +66,30 @@ const RegistrationFlow: React.FC = () => {
               otp: otpDigits.join(''),
             });
 
-            try {
-                const regResponse = await registerUser(formData);
-                console.log('Registration response:', regResponse);
-                setStep(4);
-            } catch (err: any) {
-                setError(err.message || 'Registration error');
+            if ( verifyResponse ) {
+              try {
+                  const regResponse = await registerUser(formData);
+                  console.log('Registration response:', regResponse);
+                  setStep(4);
+              } catch (err: unknown) {
+                setLoading(false);
+                let errorMessage = 'Registration error';
+                if (err instanceof Error) {
+                  errorMessage = err.message;
+                }
+                setError(errorMessage);
+              }
             }
             setLoading(false);
 
-        } catch (err: any) {
-            setLoading(false);
-            setError(err.message || 'OTP verification failed');
+        } catch (err: unknown) {
+          setLoading(false);
+          let errorMessage = 'OTP verification failed';
+          if (err instanceof Error) {
+            errorMessage = err.message;
+          }
+          setError(errorMessage);
         }
-        
         return;
     }
   };

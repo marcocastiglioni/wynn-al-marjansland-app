@@ -72,8 +72,8 @@ const OTPVerification: React.FC<OTPVerificationProps> = (props) => {
       )}
       {step === 3 && (
         <div className='flex flex-col items-center'>
-          <h3 className='mb-4'>Please check your email.</h3>
-          <p className="mb-5">We've sent a code to {deliveryDestination}</p>
+          <h3 className='mb-4'>Please check your {deliveryMethod}.</h3>
+          <p className="mb-5">We&apos;ve sent a code to {deliveryDestination}</p>
           <div className="flex justify-center space-x-3 mb-4">
             {otpDigits &&
               otpDigits.map((digit, index) => (
