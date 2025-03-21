@@ -1,0 +1,71 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_BASE_URL: ${{ github.ref == 'refs/heads/main' && secrets.PROD_API_BASE_URL || secrets.DEV_API_BASE_URL }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-next-${{ hashFiles('**/package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-next-${{ hashFiles('**/package-lock.json') }}-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Unit Tests
+        run: npm run test:ci
+
+      # Run E2E tests with Cypress
+      #- name: Run Cypress E2E Tests
+      #  uses: cypress-io/github-action@v3
+      #  with:
+      #    wait-on: 'http://localhost:3000'
+      #    browser: chrome
+      #  env:
+      #    NEXT_PUBLIC_API_BASE_URL: ${{ github.ref == 'refs/heads/main' && secrets.PROD_API_BASE_URL || secrets.DEV_API_BASE_URL }}
+
+      - name: Build Application
+        run: npm run build
+
+      - name: Deploy to Vercel
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          if [ "${GITHUB_REF}" = "refs/heads/main" ]; then
+            echo "Deploying to Production"
+            npx vercel --prod --confirm --token $VERCEL_TOKEN
+          else
+            echo "Deploying to Preview"
+            npx vercel --confirm --token $VERCEL_TOKEN
+          fi
