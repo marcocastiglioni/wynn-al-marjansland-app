@@ -6,22 +6,7 @@ import FormSelect from '@/components/FormSelect';
 import PhoneNumberInput from '@/components/PhoneNumberInput';
 import genderOptionsData from '@/data/gender.json';
 import countryOptions from '@/data/countries.json';
-
-type FormData = {
-  firstName: string;
-  lastName: string;
-  gender: 'male' | 'female' | 'other';
-  country: string;
-  email: string;
-  phoneCountry: string;
-  phoneNumber: string;
-  terms: boolean
-};
-
-interface UserRegistrationFormProps {
-    onNext: ( data: FormData ) => void;
-    defaultValues?: FormData;
-}
+import { FormData, UserRegistrationFormProps } from '../types/formData';
 
 const UserRegistrationForm: React.FC<UserRegistrationFormProps> = ({ onNext, defaultValues }) => {
 

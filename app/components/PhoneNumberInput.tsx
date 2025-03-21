@@ -32,7 +32,7 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
   ...rest
 }) => {
   
-  const { control, watch, setValue } = useFormContext();
+  const { control, watch } = useFormContext();
   const countries: Country[] = countryOptions;
   const [selectedCountry, setSelectedCountry] = useState<Country |  null>(null);
 
