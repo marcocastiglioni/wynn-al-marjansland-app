@@ -2,7 +2,13 @@ import React from 'react';
 import { FormInputProps } from '@/types/formData';
 import { FieldValues } from 'react-hook-form';
 
-const FormInput = <T extends FieldValues = FormData>({ label, name, error, register, ...rest }: FormInputProps<T>) => {
+const FormInput = <T extends FieldValues = FormData>({ 
+  label, 
+  name, 
+  error, 
+  register, 
+  ...rest 
+}: FormInputProps<T>) => {
   const registeredProps = register(name);
   return (
     <div className="flex flex-col flex-1 mb-6">
