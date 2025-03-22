@@ -153,7 +153,7 @@ const RegistrationFlow: React.FC = () => {
         )}
 
 
-        {step > 1 && <div className="flex justify-between">
+        {step > 1 && <div className="flex justify-between w-full sm:w-auto flex-col sm:flex-row gap-5 sm:gap-0">
             {step !== 1 && (
                 <button onClick={handleBack} className='rounded text-[var(--primary)] border border-[var(--primary)]'>Back</button>
             )}

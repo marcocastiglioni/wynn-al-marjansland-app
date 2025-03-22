@@ -43,7 +43,7 @@ const OTPVerification: React.FC<OTPVerificationProps> = (props) => {
         <div className='flex flex-col items-center'>
           <h3 className='mb-4'>Send Code</h3>
           <p className="mb-5">How would you like to receive the code?</p>
-          <div className="flex items-center mb-4 gap-5">
+          <div className="flex flex-col sm:flex-row items-center mb-4 sm:gap-5">
             <label className="py-7 pr-8 pl-4 font-mono font-semibold">
               <input
                 type="radio"

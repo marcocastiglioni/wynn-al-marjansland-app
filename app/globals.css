@@ -28,7 +28,7 @@
     @apply text-sm font-sans font-medium text-[var(--healine)];
   }
   button {
-    @apply text-[var(--mono)] py-4 font-semibold uppercase min-w-[217px] text-center cursor-pointer hover:shadow-lg hover:underline;
+    @apply text-[var(--mono)] py-4 font-semibold uppercase min-w-[217px] w-full sm:w-auto text-center cursor-pointer hover:shadow-lg hover:underline;
   }
 }
 
