@@ -20,7 +20,7 @@ const Header: React.FC = () => {
     });
 
     return (
-        <header className="sticky top-0 z-50 p-4 sm:py-6 sm:px-15 bg-white dark:bg-black shadow-md">
+        <header className="sticky top-0 z-50 p-4 sm:py-6 sm:px-15 bg-white dark:bg-[var(--background)] shadow-md">
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 h-full flex justify-between">
                 
                 {/* Logo */}

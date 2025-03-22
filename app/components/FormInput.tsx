@@ -15,7 +15,7 @@ const FormInput = <T extends FieldValues = FormData>({
       {label && <label htmlFor={name as string} className="mb-[6px]">{label}</label>}
       <input
         id={name as string}
-        className="bg-white border border-[var(--border)] text-[#1D1F22] placeholder:text-[#999999] py-4 px-2 md:px-5"
+        className="bg-white dark:bg-[var(--input-dark)] border border-[var(--border)] text-[#1D1F22] placeholder:text-[#999999] py-4 px-2 md:px-5"
         placeholder={rest.placeholder}
         {...rest}
         {...registeredProps}

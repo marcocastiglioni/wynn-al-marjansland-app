@@ -38,13 +38,13 @@ const OTPVerification: React.FC<OTPVerificationProps> = (props) => {
   };
 
   return (
-    <div className="p-6 bg-white mb-10">
+    <div className="p-6 bg-white dark:bg-[var(--background)] mb-10">
       {step === 2 && (
         <div className='flex flex-col items-center'>
           <h3 className='mb-4'>Send Code</h3>
           <p className="mb-5">How would you like to receive the code?</p>
           <div className="flex flex-col sm:flex-row items-center mb-4 sm:gap-5">
-            <label className="py-7 pr-8 pl-4 font-mono font-semibold">
+            <label className="py-4 sm:py-7 pr-8 pl-4 font-mono font-semibold">
               <input
                 type="radio"
                 name="deliveryMethod"
@@ -55,7 +55,7 @@ const OTPVerification: React.FC<OTPVerificationProps> = (props) => {
               />
               Send to Phone
             </label>
-            <label className="py-7 pr-8 pl-4 font-mono font-semibold">
+            <label className="py-4 sm:py-7 pr-8 pl-4 font-mono font-semibold">
               <input
                 type="radio"
                 name="deliveryMethod"

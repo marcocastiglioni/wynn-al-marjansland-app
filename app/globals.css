@@ -7,28 +7,31 @@
 
 @layer base {
   h1 {
-    @apply text-4xl font-sans font-medium text-[var(--healine)];
+    @apply text-4xl font-sans font-medium text-[var(--healine)] dark:text-white;
   }
   h2 {
-    @apply text-[22px] font-sans font-medium text-[var(--healine)] inline-flex border-b pr-[43px] pb-1 mb-5;
+    @apply text-[22px] font-sans font-medium text-[var(--healine)] dark:text-white inline-flex border-b pr-[43px] pb-1 mb-5;
   }
   h3 {
-    @apply text-xl font-sans font-medium text-[var(--healine)];
+    @apply text-xl font-sans font-medium text-[var(--healine)] dark:text-white;
   }
   h4 {
-    @apply text-lg font-sans font-medium text-[var(--healine)];
+    @apply text-lg font-sans font-medium text-[var(--healine)] dark:text-white;
   }
   h5 {
-    @apply text-lg font-sans font-medium text-[var(--healine)];
+    @apply text-lg font-sans font-medium text-[var(--healine)] dark:text-white;
   }
   h6 {
-    @apply text-base font-sans font-medium text-[var(--healine)];
+    @apply text-base font-sans font-medium text-[var(--healine)] dark:text-white;
   }
   label {
-    @apply text-sm font-sans font-medium text-[var(--healine)];
+    @apply text-sm font-sans font-medium text-[var(--healine)] dark:text-white;
   }
   button {
     @apply text-[var(--mono)] py-4 font-semibold uppercase min-w-[217px] w-full sm:w-auto text-center cursor-pointer hover:shadow-lg hover:underline;
+  }
+  p {
+    @apply dark:text-[var(--base)];
   }
 }
 
@@ -41,6 +44,7 @@
   --placeholder: #999999;
   --primary: #006F62;
   --base: #667085;
+  --input-dark: #999999;
 }
 
 @theme inline {
@@ -52,7 +56,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: var(--healine);
     --foreground: #ededed;
   }
 }

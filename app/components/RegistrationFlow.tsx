@@ -122,7 +122,7 @@ const RegistrationFlow: React.FC = () => {
                 {step !== 4 && <p className=''>Please enter below information to create your account.</p>}
             </div>
             <div>
-                <p className='text-2xl font-sans font-medium text-[var(--healine) text-[var(--healine)]'>Step {step} of 4</p>
+                <p className='text-2xl font-sans font-medium text-[var(--healine) text-[var(--healine)] dark:text-[var(--base)]'>Step {step} of 4</p>
             </div>
         </div>
         {step === 1 && (

@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
     })
 
     return (
-        <footer className="bg-[#5A3A27] md:min-h-[360px] ">
+        <footer className="bg-[#5A3A27] dark:bg-[var(--background)] md:min-h-[360px] ">
             <div className="md:max-w-[1120px] md:m-auto px-4 py-10 text-white font-12">
                 <div className="lg:max-h-[178px] mb-10 md:mb-15 flex flex-col sm:flex-row sm:flex-1 sm:justify-evenly lg:justify-between">
                     <nav className="flex flex-col flex-wrap gap-2 lg:grid lg:grid-flow-col lg:grid-rows-6 w-full mb-10 md:mb-0 sm:flex-1 md:flex-auto">
@@ -31,10 +31,10 @@ const Footer: React.FC = () => {
                     ))}
                     </nav>
                     <div className="text-[11px] lg:w-[25%] flex-1 sm:w-auto sm:flex-none">
-                        <p className="lg:mb-3">Wynn and Encore Las Vegas</p>
-                        <p className="lg:mb-3">3131 Las Vegas Blvd. Las Vegas, NV 89109</p>
-                        <p className="lg:mb-7 mb-10"><Link href={"tel:+1 (702) 770-7000"}>+1 (702) 770-7000</Link></p>
-                        <p className="lg:mb-3 mb-2">Connect with us.</p>
+                        <p className="lg:mb-3 dark:text-white">Wynn and Encore Las Vegas</p>
+                        <p className="lg:mb-3 dark:text-white">3131 Las Vegas Blvd. Las Vegas, NV 89109</p>
+                        <p className="lg:mb-7 mb-10 dark:text-white"><Link href={"tel:+1 (702) 770-7000"}>+1 (702) 770-7000</Link></p>
+                        <p className="lg:mb-3 mb-2 dark:text-white">Connect with us.</p>
                         <nav className="flex gap-2 md:justify-between">
                             <Link href={''} aria-label="Facebook" className="bg-white rounded-full w-[27px] h-[27px] flex items-center justify-center">
                                 <span className="sr-only">Facebook</span>

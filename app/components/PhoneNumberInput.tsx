@@ -51,7 +51,7 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
   return (
     <div className={`flex flex-col flex-1 ${cssModifier}`}>
       <label className="mb-2">{label}</label>
-      <div className="flex space-x-2 py-2 md:p-5 items-center bg-white border border-gray-300">
+      <div className="flex space-x-2 py-2 md:p-5 items-center bg-white dark:bg-[var(--input-dark)] border border-gray-300">
         
       <Controller
           name={countryName}
