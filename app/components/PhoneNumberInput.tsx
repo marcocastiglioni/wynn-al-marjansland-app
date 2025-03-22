@@ -37,9 +37,12 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
   const [selectedCountry, setSelectedCountry] = useState<Country |  null>(null);
   const countryValue = watch(countryName);
   const selectRef = useRef<HTMLSelectElement>(null);
+  const phoneValue = watch(phoneName);
 
-  const handleContainerClick = () => {
-    if (selectRef.current) {
+  const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if ((e.target as HTMLElement).closest('input')) return;
+    
+    if (!phoneValue && selectRef.current) {
       selectRef.current.focus();
       selectRef.current.click();
     }
