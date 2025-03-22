@@ -9,7 +9,6 @@ import countryOptions from '@/data/countries.json';
 import { FormData, UserRegistrationFormProps } from '../types/formData';
 
 const UserRegistrationForm: React.FC<UserRegistrationFormProps> = ({ onNext, defaultValues, scrollToTop }) => {
-
     const methods = useForm<FormData>({
         resolver: yupResolver(registrationSchema),
         mode: 'onBlur',
@@ -18,7 +17,7 @@ const UserRegistrationForm: React.FC<UserRegistrationFormProps> = ({ onNext, def
 
     const onSubmit = (data: FormData) => {
         onNext(data);
-        scrollToTop();
+        if ( scrollToTop ) scrollToTop();
     };
 
     return (
