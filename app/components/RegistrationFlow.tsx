@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { FormData } from '@/types/formData';
 import { OtpResponse } from '@/types/servicesData';
 import UserRegistrationForm from '@/components/UserRegistrationForm';
@@ -17,6 +17,7 @@ const RegistrationFlow: React.FC = () => {
   const [otpDigits, setOtpDigits] = useState(['', '', '', '']);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
+  const registrationContainerRef = useRef<HTMLDivElement>(null);
 
   const handleFormSubmit = (data: FormData) => {
     setFormData(data);
@@ -27,6 +28,7 @@ const RegistrationFlow: React.FC = () => {
 
   const handleNext = async () => {
     setError('');
+    scrollToTop();
     
     // Request OPT Code
     if (step === 2) {
@@ -109,14 +111,23 @@ const RegistrationFlow: React.FC = () => {
     }
   };
 
+  const scrollToTop = () => {
+    if (registrationContainerRef.current) {
+      registrationContainerRef.current.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const handleBack = () => {
     setError('');
     if ( step > 1 ) setStep((prev) => prev -1);
+    scrollToTop();
   };
 
   return (
-    <div className="">
-        <div className="flex flex-col md:flex-row justify-between mb-6 md:mb-10">
+    <>
+        <div ref={registrationContainerRef} className="flex flex-col md:flex-row justify-between mb-6 md:mb-10">
             <div className='mb-6 md:mb-0'>
                 <h1 className='mb-6 md:mb-8'>Registration</h1>
                 {step !== 4 && <p className=''>Please enter below information to create your account.</p>}
@@ -126,7 +137,7 @@ const RegistrationFlow: React.FC = () => {
             </div>
         </div>
         {step === 1 && (
-            <UserRegistrationForm onNext={handleFormSubmit} defaultValues={formData || undefined} />
+            <UserRegistrationForm onNext={handleFormSubmit} defaultValues={formData || undefined} scrollToTop={scrollToTop} />
         )}
         {step === 2 && formData && (
             <OTPVerification 
@@ -147,7 +158,7 @@ const RegistrationFlow: React.FC = () => {
             />
         )}
         {step === 4 && (
-            <div className="p-6 bg-white mb-10 text-center min-h-[256px] flex justify-center items-center">
+            <div className="p-6 bg-white dark:bg-[var(--background)] mb-10 text-center min-h-[256px] flex justify-center items-center">
                 <h3>User Registered</h3>
             </div>
         )}
@@ -164,7 +175,7 @@ const RegistrationFlow: React.FC = () => {
 
         {loading && <Loading loading={loading} />}
 
-    </div>
+    </>
   );
 };
 

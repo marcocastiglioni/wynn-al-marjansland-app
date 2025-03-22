@@ -38,6 +38,7 @@ export interface FormSelectProps<T extends FieldValues = FormData> extends React
 export interface UserRegistrationFormProps {
   onNext: ( data: FormData ) => void;
   defaultValues?: FormData;
+  scrollToTop?: () => void;
 }
 
 export interface CountryData {
