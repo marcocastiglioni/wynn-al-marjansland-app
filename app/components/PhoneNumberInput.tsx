@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IMaskInput } from 'react-imask';
 import { Controller, useFormContext } from 'react-hook-form';
 import countryOptions from '@/data/countries.json';
@@ -35,8 +35,15 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
   const { control, watch } = useFormContext();
   const countries: Country[] = countryOptions;
   const [selectedCountry, setSelectedCountry] = useState<Country |  null>(null);
-
   const countryValue = watch(countryName);
+  const selectRef = useRef<HTMLSelectElement>(null);
+
+  const handleContainerClick = () => {
+    if (selectRef.current) {
+      selectRef.current.focus();
+      selectRef.current.click();
+    }
+  };
   
   useEffect(() => {
     if (countryValue) {
@@ -49,7 +56,7 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
 
 
   return (
-    <div className={`flex flex-col flex-1 ${cssModifier}`}>
+    <div className={`flex flex-col flex-1 ${cssModifier}`} onClick={handleContainerClick}>
       <label className="mb-2">{label}</label>
       <div className="flex space-x-2 py-2 md:p-5 items-center bg-white dark:bg-[var(--input-dark)] border border-gray-300">
         
@@ -60,7 +67,10 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
           render={({ field: { onChange, value, ref } }) => (
             <select
               id={countryName}
-              ref={ref}
+              ref={(node) => {
+                ref(node);
+                selectRef.current = node;
+              }}
               value={value}
               onChange={(e) => {
                 const selected = countries.find((c) => c.code === e.target.value) || null;
