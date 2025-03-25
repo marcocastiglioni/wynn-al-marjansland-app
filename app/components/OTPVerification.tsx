@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { FormData } from '@/types/formData';
+import { UserFormData } from '@/types/formData';
 
 interface OTPVerificationProps {
   step: number;
@@ -9,7 +9,7 @@ interface OTPVerificationProps {
   setDeliveryMethod?: (value: 'phone' | 'email' | '') => void;
   otpDigits?: string[];
   setOtpDigits?: (value: string[]) => void;
-  formData?: FormData;
+  formData?: UserFormData;
   otpError?: string;
 }
 

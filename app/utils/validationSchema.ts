@@ -1,7 +1,6 @@
 import { object, string, boolean } from 'yup';
-import { FormData } from '@/types/formData';
+import { UserFormData, CountryData } from '@/types/formData';
 import countries from '@/data/countries.json';
-import { CountryData } from '@/types/formData';
 
 const phoneCountryValidation = string()
   .required('Country Code is required')
@@ -12,7 +11,7 @@ const phoneCountryValidation = string()
 const phoneNumberValidation = string()
   .required('Phone Number is required')
   .test('valid-phone', 'Invalid Phone Number', function (value) {
-    const { phoneCountry } = this.parent as FormData;
+    const { phoneCountry } = this.parent as UserFormData;
     const country = countries.find((c: CountryData) => c.code === phoneCountry);
     if (!country) return false;
     const regex = new RegExp(country.phoneRegex);

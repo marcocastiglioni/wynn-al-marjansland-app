@@ -1,6 +1,6 @@
 import { UseFormRegister, FieldValues, Path } from 'react-hook-form';
 
-export interface FormData  {
+export interface UserFormData  {
   firstName: string;
   lastName: string;
   gender: 'male' | 'female' | 'other';
@@ -11,7 +11,7 @@ export interface FormData  {
   terms: boolean
 };
 
-export interface FormInputProps<T extends FieldValues = FormData> extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface FormInputProps<T extends FieldValues = UserFormData> extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   name: Path<T>;
   type?: string;
@@ -26,7 +26,7 @@ export interface OptionItem {
   flag?: string;
 }
 
-export interface FormSelectProps<T extends FieldValues = FormData> extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface FormSelectProps<T extends FieldValues = UserFormData> extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
   name: Path<T>;
   options: OptionItem[];
@@ -36,8 +36,8 @@ export interface FormSelectProps<T extends FieldValues = FormData> extends React
 }
 
 export interface UserRegistrationFormProps {
-  onNext: ( data: FormData ) => void;
-  defaultValues?: FormData;
+  onNext: ( data: UserFormData ) => void;
+  defaultValues?: UserFormData;
   scrollToTop?: () => void;
 }
 

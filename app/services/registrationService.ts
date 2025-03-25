@@ -1,7 +1,7 @@
-import { FormData } from '@/types/formData';
+import { UserFormData } from '@/types/formData';
 import { RegistrationResponse } from '@/types/servicesData';
 
-export async function registerUser(data: FormData): Promise<RegistrationResponse> {
+export async function registerUser(data: UserFormData): Promise<RegistrationResponse> {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

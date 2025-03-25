@@ -6,16 +6,16 @@ import FormSelect from '@/components/FormSelect';
 import PhoneNumberInput from '@/components/PhoneNumberInput';
 import genderOptionsData from '@/data/gender.json';
 import countryOptions from '@/data/countries.json';
-import { FormData, UserRegistrationFormProps } from '../types/formData';
+import { UserFormData, UserRegistrationFormProps } from '../types/formData';
 
 const UserRegistrationForm: React.FC<UserRegistrationFormProps> = ({ onNext, defaultValues, scrollToTop }) => {
-    const methods = useForm<FormData>({
+    const methods = useForm<UserFormData>({
         resolver: yupResolver(registrationSchema),
         mode: 'onBlur',
         defaultValues,
     });
 
-    const onSubmit = (data: FormData) => {
+    const onSubmit = (data: UserFormData) => {
         onNext(data);
         if ( scrollToTop ) scrollToTop();
     };

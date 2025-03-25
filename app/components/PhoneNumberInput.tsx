@@ -34,7 +34,7 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
   
   const { control, watch } = useFormContext();
   const countries: Country[] = countryOptions;
-  const [selectedCountry, setSelectedCountry] = useState<Country |  null>(null);
+  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const countryValue = watch(countryName);
   const selectRef = useRef<HTMLSelectElement>(null);
   const phoneValue = watch(phoneName);
@@ -70,6 +70,7 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
           render={({ field: { onChange, value, ref } }) => (
             <select
               id={countryName}
+              aria-label={countryName}
               ref={(node) => {
                 ref(node);
                 selectRef.current = node;
@@ -92,7 +93,7 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
           )}
         />
         
-        <span className="text-[#1D1F22] placeholder:text-[#999999]">{selectedCountry ? selectedCountry.code : ''}</span>
+        <span data-testid="country-code-display" className="text-[#1D1F22] placeholder:text-[#999999]">{selectedCountry ? selectedCountry.code : ''}</span>
         
         <Controller
           name={phoneName}

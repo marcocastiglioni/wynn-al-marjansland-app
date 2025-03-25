@@ -2,7 +2,15 @@ import React from 'react';
 import { FormSelectProps } from '@/types/formData';
 import { FieldValues } from 'react-hook-form';
 
-const FormSelect = <T extends FieldValues = FormData>({ label, name, options, error, register, placeholder, ...rest }: FormSelectProps<T>) => {
+const FormSelect = <T extends FieldValues = FormData>({ 
+  label, 
+  name, 
+  options, 
+  error, 
+  register, 
+  placeholder, 
+  ...rest 
+}: FormSelectProps<T>) => {
   const registeredProps = register(name);
   return (
     <div className="flex flex-col flex-1 mb-6">

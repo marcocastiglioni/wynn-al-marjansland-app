@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { FormData } from '@/types/formData';
+import { UserFormData } from '@/types/formData';
 import { OtpResponse } from '@/types/servicesData';
 import UserRegistrationForm from '@/components/UserRegistrationForm';
 import OTPVerification from '@/components/OTPVerification';
@@ -11,7 +11,7 @@ import { sendOtp, verifyOtp } from '@/services/otpService';
 
 const RegistrationFlow: React.FC = () => {
   const [step, setStep] = useState<number>(1);
-  const [formData, setFormData] = useState<FormData | null>(null);
+  const [formData, setFormData] = useState<UserFormData | null>(null);
   const [deliveryMethod, setDeliveryMethod] = useState<'phone' | 'email' | ''>('');
   const [otpResponse, setOtpResponse] = useState<OtpResponse | null>(null);
   const [otpDigits, setOtpDigits] = useState(['', '', '', '']);
@@ -19,7 +19,7 @@ const RegistrationFlow: React.FC = () => {
   const [error, setError] = useState<string>('');
   const registrationContainerRef = useRef<HTMLDivElement>(null);
 
-  const handleFormSubmit = (data: FormData) => {
+  const handleFormSubmit = (data: UserFormData) => {
     setFormData(data);
     setDeliveryMethod( deliveryMethod || '');
     setOtpDigits(otpDigits || ['', '', '', '']);

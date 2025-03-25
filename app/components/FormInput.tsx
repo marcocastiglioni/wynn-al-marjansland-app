@@ -1,8 +1,8 @@
 import React from 'react';
-import { FormInputProps } from '@/types/formData';
+import { FormInputProps, UserFormData } from '@/types/formData';
 import { FieldValues } from 'react-hook-form';
 
-const FormInput = <T extends FieldValues = FormData>({ 
+const FormInput = <T extends FieldValues = UserFormData>({ 
   label, 
   name, 
   error, 
